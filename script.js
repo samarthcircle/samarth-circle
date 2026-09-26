@@ -9,6 +9,16 @@ function updateHeader() {
 updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
 
+const communityBand = document.querySelector(".community-band");
+if (communityBand && "IntersectionObserver" in window) {
+  const headerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      siteHeader?.classList.toggle("community-active", entry.isIntersecting);
+    });
+  }, { threshold: 0.28 });
+  headerObserver.observe(communityBand);
+}
+
 if (menuToggle && mainNav) {
   menuToggle.addEventListener("click", () => {
     const open = mainNav.classList.toggle("open");
