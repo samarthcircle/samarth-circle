@@ -1,5 +1,13 @@
+const siteHeader = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector(".main-nav");
+
+function updateHeader() {
+  if (siteHeader) siteHeader.classList.toggle("scrolled", window.scrollY > 18);
+}
+
+updateHeader();
+window.addEventListener("scroll", updateHeader, { passive: true });
 
 if (menuToggle && mainNav) {
   menuToggle.addEventListener("click", () => {
