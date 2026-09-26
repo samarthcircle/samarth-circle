@@ -1,46 +1,23 @@
-# Samarth Circle — Website V3
+# Samarth Circle — Website V9
 
-A lightweight static website for Samarth Circle.
+Final static GitHub Pages website for Samarth Circle.
 
-## Files
+## V9 refinements
+- Two-image extreme-left header lockup using `assets/logo.png` and `assets/wordmark.png`.
+- Wordmark reduced in size and seated in the left-side brand zone.
+- Automatic wordmark contrast state as dark-blue and light-blue sections pass behind the fixed header.
+- Hero lower blue tint strengthened for readable cream typography.
+- MAGIC heading uses the same serif treatment as the large M-A-G-I-C letters; final punctuation remains `M.A.G.I.C`.
+- Who We Serve uses the revised audience list, including Real-estate Developers / Landowners.
+- Final end image slightly enlarged.
 
-- `index.html` — structure and content
-- `style.css` — design and responsive layout
-- `script.js` — navigation, animations and current year
-- `ASSET-GUIDE.txt` — exact names for original brand files
-- `assets/` — original Samarth Circle images go here
+## Required assets
+Upload/retain these exact files in `assets/`:
+- `logo.png` — standalone logo/symbol
+- `wordmark.png` — rectangular wordmark image
+- `samarth-favicon.png`
+- `samarth-hero.jpg`
+- `samarth-endimage.png`
 
-## Required brand asset
-
-Rename the original Samarth Circle wordmark/logo file to:
-
-`samarth-wordmark.png`
-
-Then upload it into:
-
-`assets/samarth-wordmark.png`
-
-## Optional hero asset
-
-Rename the chosen hero photograph to:
-
-`samarth-hero.jpg`
-
-Then upload it into:
-
-`assets/samarth-hero.jpg`
-
-If it is not present, the site still works using the built-in CSS background.
-
-## Before publishing
-
-Replace `YOURNUMBER` in `index.html` with the final phone/WhatsApp number.
-
-Do not alter GoDaddy email/MX DNS records when connecting the custom domain.
-
-## GitHub Pages
-
-Upload all files and the `assets` folder to the repository root.
-Then enable GitHub Pages from the `main` branch and `/ (root)`.
-
-Test the free GitHub Pages address first. Connect `samarthcircle.com` only after the site is confirmed working.
+## GitHub update
+Replace only `index.html`, `style.css`, and `script.js`. Do not change DNS or GitHub Pages settings.
