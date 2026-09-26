@@ -4,7 +4,7 @@ const mainNav = document.querySelector(".main-nav");
 
 function updateHeader() {
   if (!siteHeader) return;
-  siteHeader.classList.toggle("scrolled", window.scrollY > 18);
+  siteHeader.classList.toggle("scrolled", window.scrollY > 160);
 }
 updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
