@@ -10,31 +10,45 @@ updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
 
 /*
-  Wordmark contrast states:
-  - normal: original brand artwork
-  - dark/light: Samarth + upper logo curve use cream; Circle remains light blue on dark sections,
-    and uses deep blue on the light-blue Who We Serve section.
-  The two artwork layers are kept independent so the header itself never changes theme.
+  Header contrast follows the section physically passing behind the fixed ribbon.
+  This is deliberately geometry-based rather than relying on independent observer
+  booleans, so the dark-blue -> light-blue transition cannot get stuck.
 */
-const communityBand = document.querySelector(".community-band");
-const darkSections = Array.from(document.querySelectorAll(".section-dark"));
+const themeSections = [
+  { el: document.querySelector(".hero"), theme: "dark" },
+  { el: document.querySelector(".section-dark"), theme: "dark" },
+  { el: document.querySelector(".community-band"), theme: "light" },
+  { el: document.querySelector(".site-footer"), theme: "dark" }
+].filter(item => item.el);
 
-if ("IntersectionObserver" in window && siteHeader) {
-  const headerObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.target === communityBand) {
-        siteHeader.classList.toggle("community-active", entry.isIntersecting);
-        siteHeader.classList.toggle("wordmark-light", entry.isIntersecting);
-      }
-      if (entry.target.classList.contains("section-dark")) {
-        siteHeader.classList.toggle("wordmark-dark", entry.isIntersecting);
-      }
-    });
-  }, { threshold: 0.18 });
+function updateHeaderTheme() {
+  if (!siteHeader || !themeSections.length) return;
 
-  if (communityBand) headerObserver.observe(communityBand);
-  darkSections.forEach(section => headerObserver.observe(section));
+  // Sample just below the fixed ribbon. The section occupying this horizontal
+  // band is the section that should control the logo/wordmark contrast.
+  const sampleY = Math.min(siteHeader.offsetHeight * 0.72, window.innerHeight - 1);
+  let activeTheme = "normal";
+  let closestDistance = Infinity;
+
+  themeSections.forEach(({ el, theme }) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= sampleY && rect.bottom >= sampleY) {
+      const distance = Math.abs(rect.top - sampleY);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        activeTheme = theme;
+      }
+    }
+  });
+
+  siteHeader.classList.toggle("wordmark-dark", activeTheme === "dark");
+  siteHeader.classList.toggle("wordmark-light", activeTheme === "light");
+  siteHeader.classList.toggle("community-active", activeTheme === "light");
 }
+
+updateHeaderTheme();
+window.addEventListener("scroll", updateHeaderTheme, { passive: true });
+window.addEventListener("resize", updateHeaderTheme);
 
 if (menuToggle && mainNav) {
   menuToggle.addEventListener("click", () => {
