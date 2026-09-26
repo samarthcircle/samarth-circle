@@ -15,19 +15,34 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 */
 
 /*
-  Some mobile browsers keep a narrow CSS viewport even after the user chooses
-  "Desktop site". Detect that browser mode and let the stylesheet use its
-  compact desktop canvas instead of the portrait/mobile layout.
+  Desktop-site mode on phones:
+  Chrome/Android can change its user-agent when "Request desktop site" is enabled.
+  Detect that state using the combination of a touch device, a narrow physical
+  viewport and a desktop-style user-agent, rather than relying on one UA token.
 */
-function updateDesktopRequest() {
+function isDesktopRequestedOnTouchDevice() {
   const ua = navigator.userAgent || "";
-  const looksLikeMobileUA = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
-  const hasDesktopUA = /Windows NT|Macintosh|X11|Linux x86_64/i.test(ua) && !/Mobile/i.test(ua);
-  const desktopRequested = looksLikeMobileUA && hasDesktopUA;
-  document.documentElement.classList.toggle("desktop-requested", desktopRequested);
+  const touch = (navigator.maxTouchPoints || 0) > 0 || "ontouchstart" in window;
+  const narrow = Math.min(window.innerWidth || 0, window.screen?.width || window.innerWidth || 0) <= 800;
+  const androidDesktopUA = /Android/i.test(ua) && !/Mobile/i.test(ua);
+  const iphoneDesktopUA = /Macintosh/i.test(ua) && touch && !/Mobile/i.test(ua) && !/iPad/i.test(ua);
+  return touch && narrow && (androidDesktopUA || iphoneDesktopUA);
+}
+
+function updateDesktopRequest() {
+  const requested = isDesktopRequestedOnTouchDevice();
+  document.documentElement.classList.toggle("desktop-requested", requested);
+
+  if (requested && window.innerWidth < 980) {
+    const scale = Math.max(0.42, Math.min(1, window.innerWidth / 980));
+    document.documentElement.style.setProperty("--desktop-scale", String(scale));
+  } else {
+    document.documentElement.style.removeProperty("--desktop-scale");
+  }
 }
 updateDesktopRequest();
 window.addEventListener("resize", updateDesktopRequest, { passive: true });
+window.addEventListener("orientationchange", updateDesktopRequest, { passive: true });
 
 if (menuToggle && mainNav) {
   menuToggle.addEventListener("click", () => {
