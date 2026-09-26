@@ -104,3 +104,36 @@
   min-width:0 !important;
   width:auto !important;
 }
+
+/* ================= LAYER 2 — INTERACTION & MOTION ================= */
+body.detail-open{overflow:hidden}
+.service-link,.magic-link,.expertise-link{cursor:pointer}
+.service-card,.magic-card,.expertise-card{transition:transform .55s cubic-bezier(.22,.61,.36,1),border-color .4s ease,box-shadow .55s ease,background-color .4s ease}
+.service-card:hover{transform:translateY(-6px);border-color:rgba(5,180,230,.48);box-shadow:0 18px 42px rgba(0,0,0,.18)}
+.service-card:hover .service-number,.service-card:hover .card-action{color:var(--light-blue)}
+.card-action{display:flex;align-items:center;gap:9px;margin-top:28px;color:rgba(245,243,233,.48);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:color .3s ease,transform .3s ease}
+.card-action span{font-size:16px;line-height:1;transition:transform .3s ease}.service-card:hover .card-action span{transform:translate(3px,-3px)}
+.magic-link:hover{transform:translateY(-7px);background:rgba(6,30,110,.035);box-shadow:0 18px 34px rgba(6,30,110,.08)}
+.magic-link:hover .magic-line{width:82px}.magic-line{transition:width .4s cubic-bezier(.22,.61,.36,1)}
+.expertise-link:hover{transform:translateY(-6px);border-color:rgba(5,180,230,.42);box-shadow:0 18px 36px rgba(6,30,110,.08)}
+
+/* Detail panel: intentionally editorial rather than app-like. */
+.detail-overlay{position:fixed;inset:0;z-index:100;visibility:hidden;pointer-events:none}
+.detail-overlay.open{visibility:visible;pointer-events:auto}
+.detail-backdrop{position:absolute;inset:0;background:rgba(6,30,110,.48);opacity:0;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);transition:opacity .45s ease}
+.detail-overlay.open .detail-backdrop{opacity:1}
+.detail-panel{position:absolute;right:0;top:0;height:100%;width:min(610px,76vw);background:var(--cream);color:var(--blue);box-shadow:-24px 0 70px rgba(6,30,110,.22);transform:translateX(100%);transition:transform .62s cubic-bezier(.22,.61,.36,1);outline:none;overflow-y:auto}
+.detail-overlay.open .detail-panel{transform:translateX(0)}
+.detail-close{position:absolute;right:26px;top:24px;width:42px;height:42px;border:1px solid rgba(6,30,110,.18);border-radius:50%;background:transparent;color:var(--blue);font-size:27px;font-weight:300;line-height:1;cursor:pointer;z-index:2;transition:background .25s ease,color .25s ease,transform .25s ease}.detail-close:hover{background:var(--blue);color:var(--cream);transform:rotate(90deg)}
+.detail-panel-inner{padding:86px 68px 54px}.detail-panel h2{font-size:clamp(43px,5vw,66px);max-width:500px;margin-bottom:24px}.detail-intro{max-width:510px;font-family:var(--serif);font-size:18px;line-height:1.8;color:rgba(6,30,110,.73);margin-bottom:38px}
+.detail-list{border-top:1px solid var(--line-dark)}
+.detail-row{width:100%;display:grid;grid-template-columns:1fr auto;gap:22px;text-align:left;padding:22px 0;border:0;border-bottom:1px solid var(--line-dark);background:transparent;color:var(--blue);cursor:pointer;font-family:var(--sans)}
+.detail-row strong{display:block;font-size:15px;font-weight:600;letter-spacing:.01em}.detail-row small{display:block;max-width:450px;max-height:0;overflow:hidden;opacity:0;margin-top:0;color:rgba(6,30,110,.65);font-size:13px;line-height:1.7;transition:max-height .45s ease,opacity .35s ease,margin-top .35s ease}.detail-row b{font-size:22px;font-weight:300;transition:transform .35s ease;color:var(--light-blue)}.detail-row.open small{max-height:180px;opacity:1;margin-top:8px}.detail-row.open b{transform:rotate(45deg)}
+.detail-footer{margin-top:40px;padding-top:25px;border-top:1px solid var(--line-dark);display:flex;align-items:center;justify-content:space-between;gap:20px}.detail-footer>span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(6,30,110,.52)}.detail-button{background:var(--blue);color:var(--cream);min-height:44px;padding:0 18px}.detail-button:hover{background:var(--light-blue);color:var(--blue)}
+
+/* More deliberate scroll choreography. */
+.reveal{opacity:0;transform:translate3d(0,24px,0);transition:opacity .72s cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms),transform .72s cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms)}
+.reveal.visible{opacity:1;transform:translate3d(0,0,0)}
+
+@media(prefers-reduced-motion:reduce){.service-card,.magic-card,.expertise-card,.detail-panel,.detail-backdrop,.reveal,.detail-row small,.detail-row b{transition:none}.reveal{opacity:1;transform:none}.detail-close:hover{transform:none}}
+@media(max-width:800px){.detail-panel{width:82vw}.detail-panel-inner{padding:76px 42px 44px}.detail-footer{flex-direction:column;align-items:flex-start}}

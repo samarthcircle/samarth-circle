@@ -83,28 +83,32 @@
         </div>
 
         <div class="service-grid">
-          <article class="service-card reveal">
+          <article class="service-card reveal service-link" data-detail="compliance" tabindex="0" role="button" aria-label="Explore Society Compliance">
             <span class="service-number">01</span>
             <h3>Society Compliance</h3>
-            <p>Statutory requirements, regulatory processes, records, filings and ongoing compliance matters.</p>
+            <p>Structured support for statutory registers, elections, regulatory correspondence, recovery proceedings, filings and the continuing compliance obligations of a cooperative society.</p>
+            <span class="card-action">Explore <span>↗</span></span>
           </article>
 
-          <article class="service-card reveal">
+          <article class="service-card reveal service-link" data-detail="accounts" tabindex="0" role="button" aria-label="Explore Accounts and Operations">
             <span class="service-number">02</span>
             <h3>Accounts &amp; Operations</h3>
-            <p>Accounting, maintenance billing, financial administration and practical support for the day-to-day operation of a society.</p>
+            <p>Disciplined accounting, maintenance billing and financial administration, supported by practical systems for the everyday functioning of the society.</p>
+            <span class="card-action">Explore <span>↗</span></span>
           </article>
 
-          <article class="service-card reveal">
+          <article class="service-card reveal service-link" data-detail="governance" tabindex="0" role="button" aria-label="Explore Governance and Documentation">
             <span class="service-number">03</span>
             <h3>Governance &amp; Documentation</h3>
-            <p>Support for meetings, notices, resolutions, records, policies and important society documentation.</p>
+            <p>Clear processes for meetings, notices, resolutions, records, policies and the documentation that gives committee decisions structure and continuity.</p>
+            <span class="card-action">Explore <span>↗</span></span>
           </article>
 
-          <article class="service-card reveal">
+          <article class="service-card reveal service-link" data-detail="advisory" tabindex="0" role="button" aria-label="Explore Specialised Advisory">
             <span class="service-number">04</span>
             <h3>Specialised Advisory</h3>
-            <p>Focused support for specific society matters, including redevelopment, conveyance and other regulatory or administrative requirements.</p>
+            <p>Focused consultation across conveyance, redevelopment, society registration, solar initiatives, risk assessment and other matters requiring a broader strategic view.</p>
+            <span class="card-action">Explore <span>↗</span></span>
           </article>
         </div>
       </div>
@@ -119,11 +123,11 @@
         </div>
 
         <div class="magic-grid">
-          <article class="magic-card magic-m reveal"><span class="magic-letter">M</span><span class="magic-line"></span><h3>MANAGE</h3></article>
-          <article class="magic-card magic-a reveal"><span class="magic-letter">A</span><span class="magic-line"></span><h3>ADVISE</h3></article>
-          <article class="magic-card magic-g reveal"><span class="magic-letter">G</span><span class="magic-line"></span><h3>GOVERN</h3></article>
-          <article class="magic-card magic-i reveal"><span class="magic-letter">I</span><span class="magic-line"></span><h3>INSURE</h3></article>
-          <article class="magic-card magic-c reveal"><span class="magic-letter">C</span><span class="magic-line"></span><h3>COMPLY</h3></article>
+          <article class="magic-card magic-m reveal magic-link" data-detail="manage" tabindex="0" role="button" aria-label="Explore Manage"><span class="magic-letter">M</span><span class="magic-line"></span><h3>MANAGE</h3></article>
+          <article class="magic-card magic-a reveal magic-link" data-detail="advise" tabindex="0" role="button" aria-label="Explore Advise"><span class="magic-letter">A</span><span class="magic-line"></span><h3>ADVISE</h3></article>
+          <article class="magic-card magic-g reveal magic-link" data-detail="govern" tabindex="0" role="button" aria-label="Explore Govern"><span class="magic-letter">G</span><span class="magic-line"></span><h3>GOVERN</h3></article>
+          <article class="magic-card magic-i reveal magic-link" data-detail="insure" tabindex="0" role="button" aria-label="Explore Insure"><span class="magic-letter">I</span><span class="magic-line"></span><h3>INSURE</h3></article>
+          <article class="magic-card magic-c reveal magic-link" data-detail="comply" tabindex="0" role="button" aria-label="Explore Comply"><span class="magic-letter">C</span><span class="magic-line"></span><h3>COMPLY</h3></article>
         </div>
       </div>
     </section>
@@ -139,25 +143,25 @@
         </div>
 
         <div class="expertise-grid">
-          <article class="expertise-card reveal">
+          <article class="expertise-card reveal expertise-link" data-detail="expertise-compliance" tabindex="0" role="button" aria-label="Explore Cooperative Society Compliance">
             <span class="expertise-number">01</span>
             <h3>Cooperative Society Compliance</h3>
             <p>Statutory and regulatory understanding applied to the requirements of cooperative housing societies.</p>
           </article>
 
-          <article class="expertise-card reveal">
+          <article class="expertise-card reveal expertise-link" data-detail="expertise-accounts" tabindex="0" role="button" aria-label="Explore Accounting and Operations">
             <span class="expertise-number">02</span>
             <h3>Accounting &amp; Operations</h3>
             <p>Financial management, accounting, billing and day-to-day operations management.</p>
           </article>
 
-          <article class="expertise-card reveal">
+          <article class="expertise-card reveal expertise-link" data-detail="expertise-governance" tabindex="0" role="button" aria-label="Explore Governance and Documentation">
             <span class="expertise-number">03</span>
             <h3>Governance &amp; Documentation</h3>
             <p>People, policies, processes, resolutions, records and documentation that support sound committee governance.</p>
           </article>
 
-          <article class="expertise-card reveal">
+          <article class="expertise-card reveal expertise-link" data-detail="expertise-advisory" tabindex="0" role="button" aria-label="Explore Advisory, Risk and Projects">
             <span class="expertise-number">04</span>
             <h3>Advisory, Risk &amp; Projects</h3>
             <p>Strategic advice, project support, risk considerations, coverage and consultation for matters that require a broader view.</p>
@@ -195,6 +199,24 @@
         </div>
       </div>
     </section>
+
+    <!-- LAYER 2 DETAIL PANEL -->
+    <div class="detail-overlay" id="detailOverlay" aria-hidden="true">
+      <div class="detail-backdrop" data-detail-close></div>
+      <aside class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <button class="detail-close" type="button" aria-label="Close details" data-detail-close>×</button>
+        <div class="detail-panel-inner">
+          <p class="eyebrow dark" id="detailEyebrow">SAMARTH CIRCLE</p>
+          <h2 id="detailTitle"></h2>
+          <p class="detail-intro" id="detailIntro"></p>
+          <div class="detail-list" id="detailList"></div>
+          <div class="detail-footer">
+            <span>Have a matter to discuss?</span>
+            <a class="button detail-button" href="https://wa.me/917057998533" target="_blank" rel="noopener">Talk to Samarth Circle</a>
+          </div>
+        </div>
+      </aside>
+    </div>
 
     <!-- CONTACT -->
     <section class="section section-light contact-section" id="contact">
