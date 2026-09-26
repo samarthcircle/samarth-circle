@@ -170,6 +170,11 @@ function openDetail(key, trigger) {
   const data = detailData[key];
   if (!data || !detailOverlay) return;
   lastDetailTrigger = trigger || null;
+  detailOverlay.classList.remove("motion-services","motion-magic","motion-expertise");
+  const keyText = String(key || "");
+  if (keyText.startsWith("expertise-")) detailOverlay.classList.add("motion-expertise");
+  else if (["manage","advise","govern","insure","comply"].includes(keyText)) detailOverlay.classList.add("motion-magic");
+  else detailOverlay.classList.add("motion-services");
   detailEyebrow.textContent = data.eyebrow;
   detailTitle.textContent = data.title;
   detailIntro.textContent = data.intro;
