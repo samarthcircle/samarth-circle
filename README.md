@@ -1,23 +1,17 @@
-# Samarth Circle — Website V9
+# Samarth Circle — V17
 
-Final static GitHub Pages website for Samarth Circle.
+Layer 2 refinement based on V15/V16.
 
-## V9 refinements
-- Two-image extreme-left header lockup using `assets/logo.png` and `assets/wordmark.png`.
-- Wordmark reduced in size and seated in the left-side brand zone.
-- Automatic wordmark contrast state as dark-blue and light-blue sections pass behind the fixed header.
-- Hero lower blue tint strengthened for readable cream typography.
-- MAGIC heading uses the same serif treatment as the large M-A-G-I-C letters; final punctuation remains `M.A.G.I.C`.
-- Who We Serve uses the revised audience list, including Real-estate Developers / Landowners.
-- Final end image slightly enlarged.
+## V17 changes
+- Keeps Layer 1 structure, copy, brand assets, fixed desktop-on-phone architecture, ribbon, logo/wordmark, hero and MAGIC layout unchanged.
+- Replaces the Layer 2 narrow right-side detail drawer with a centered, spacious editorial modal.
+- Corrects the narrow two-word-per-line feeling by giving the detail content a wide reading column.
+- Adds three distinct detail-entry motions:
+  - Services: refined lift/scale
+  - MAGIC: subtle card-turn / perspective reveal
+  - Expertise: quiet editorial slide-in
+- Includes a visible close button, backdrop close, Escape-key close, and keyboard-accessible triggers.
+- Questionnaire remains intentionally deferred.
 
 ## Required assets
-Upload/retain these exact files in `assets/`:
-- `logo.png` — standalone logo/symbol
-- `wordmark.png` — rectangular wordmark image
-- `samarth-favicon.png`
-- `samarth-hero.jpg`
-- `samarth-endimage.png`
-
-## GitHub update
-Replace only `index.html`, `style.css`, and `script.js`. Do not change DNS or GitHub Pages settings.
+Use the same existing assets from the current Samarth Circle site. No assets are included in this ZIP.
